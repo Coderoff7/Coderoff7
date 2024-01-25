@@ -11,7 +11,10 @@
     </style>
 </head>
 <body>
-    <ol>
+  <input type="text" id="searchInput" oninput="performSearch()" placeholder="Введите запрос">
+
+  <ul id="itemList">
+    
         <li>What's <strong>the most dangerous</strong> sport?</li>
         <li>
           I have got 2 computers. One of them is
@@ -191,7 +194,7 @@
           <strong>has been waiting</strong> for his friend for over an hour now.
         </li>
       </ol>
-      <ol start="51">
+    
         <li>
           Choose the correct form of the verb. She
           <strong>has been working</strong> here for five years.
@@ -378,7 +381,7 @@
           <strong>Kevin Systrom and Mike Krieger</strong>.
         </li>
       </ol>
-      <ol start="101">
+      
         <li>
           Choose the appropriate form of the modal verb. My dad
           <strong>can</strong> speak English, German, and Italian.
@@ -1173,5 +1176,29 @@
           <strong>the</strong> centre?
         </li>
       </ol>
+    </ul>
+
+      <script>
+        function performSearch() {
+            // Получаем значение из поля ввода
+            var query = document.getElementById('searchInput').value.toLowerCase();
+
+            // Получаем список элементов
+            var itemList = document.getElementById('itemList');
+
+            // Получаем все элементы списка
+            var items = itemList.getElementsByTagName('li');
+
+            // Перебираем элементы и скрываем те, которые не соответствуют запросу
+            for (var i = 0; i < items.length; i++) {
+                var itemText = items[i].textContent.toLowerCase();
+                if (itemText.includes(query)) {
+                    items[i].style.display = 'list-item';
+                } else {
+                    items[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
 </body>
 </html>
